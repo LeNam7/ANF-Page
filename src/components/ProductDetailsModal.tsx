@@ -9,6 +9,7 @@ interface ProductDetailsModalProps {
 
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
+import { motion } from 'framer-motion';
 
 export default function ProductDetailsModal({ product, onClose }: ProductDetailsModalProps) {
   const { t, language } = useLanguage();
@@ -29,7 +30,7 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
       padding: '1rem', backdropFilter: 'blur(8px)', opacity: 1, 
       animation: 'fadeIn 0.3s ease-out'
     }}>
-      <div className="glass-card modal-content" onClick={(e) => e.stopPropagation()} style={{
+      <motion.div initial={{ opacity: 0, scale: 0.95, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.5, type: 'spring', bounce: 0.4 }} className="glass-card modal-content" data-lenis-prevent="true" onClick={(e) => e.stopPropagation()} style={{
         width: '100%', maxWidth: '1000px', maxHeight: '90vh', overflowY: 'auto', 
         padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', 
         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px'
@@ -140,7 +141,7 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
           </div>
           
         </div>
-      </div>
+      </motion.div>
     </div>,
     document.body
   );

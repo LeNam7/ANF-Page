@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function Testimonials() {
   const { t } = useLanguage();
@@ -19,7 +20,14 @@ export default function Testimonials() {
 
   return (
     <section className="testimonials-slider-section section-padding bg-light">
-        <div className="container animate-on-scroll" style={{ position: 'relative', maxWidth: '1000px', textAlign: 'center' }}>
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }} 
+            whileInView={{ opacity: 1, scale: 1 }} 
+            viewport={{ once: true, margin: "-100px" }} 
+            transition={{ duration: 0.8, ease: "easeOut" }} 
+            className="container" 
+            style={{ position: 'relative', maxWidth: '1000px', textAlign: 'center' }}
+        >
             <div className="slider-controls">
                 <button className="slider-btn prev-btn" onClick={() => changeTestimonial(-1)}>
                     <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" strokeWidth="1.5" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -63,7 +71,7 @@ export default function Testimonials() {
                     <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" strokeWidth="1.5" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </button>
             </div>
-        </div>
+        </motion.div>
     </section>
   );
 }

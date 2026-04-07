@@ -4,6 +4,7 @@ import { products } from '../data/products';
 import type { Product } from '../data/products';
 import ProductDetailsModal from './ProductDetailsModal';
 import { useLanguage } from '../contexts/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function Products() {
   const { t, language } = useLanguage();
@@ -71,12 +72,19 @@ export default function Products() {
   return (
     <section id="products" className="products section-padding bg-light">
       <div className="container">
-        <div className="text-center animate-on-scroll-products" style={{ textAlign: 'center' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true, margin: "-50px" }} 
+          transition={{ duration: 0.6 }} 
+          className="text-center" 
+          style={{ textAlign: 'center' }}
+        >
           <p className="hero-label text-primary uppercase tracker" style={{ justifyContent: 'center', marginBottom: '0.5rem' }}>{t('products.label')}</p>
           <h2 className="section-title" style={{ marginBottom: '3rem', textAlign: 'center' }}>{t('products.title')}</h2>
-        </div>
+        </motion.div>
         
-        <div className="animate-on-scroll-products">
+        <div>
           <div 
             className={`products-slider-wrapper ${isMouseDown ? 'active' : ''}`}
             ref={sliderRef}
@@ -85,10 +93,18 @@ export default function Products() {
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
           >
-            <div className="products-carousel">
+            <motion.div 
+                className="products-carousel"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+            >
               {products.map(product => (
-                <div 
+                <motion.div 
                   key={product.id} 
+                  variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0 } }}
+                  whileHover={{ scale: 1.03, y: -5, boxShadow: "0 25px 40px rgba(0,229,255,0.15)" }}
                   className="product-card glass-card"
                   onClick={() => handleProductClick(product)}
                   style={{ cursor: 'pointer' }}
@@ -100,9 +116,9 @@ export default function Products() {
                     <h3 className="product-title">{language === 'en' ? (product.enTitle || product.title) : product.title}</h3>
                     <p className="product-desc">{language === 'en' ? (product.enDescription || product.description) : product.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

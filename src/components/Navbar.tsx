@@ -6,6 +6,7 @@ import type { Product } from '../data/products';
 import ProductDetailsModal from './ProductDetailsModal';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -51,33 +52,31 @@ export default function Navbar() {
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
+  const handleThemeToggle = () => {
+      window.dispatchEvent(new CustomEvent('triggerCircuitTransition', {
+          detail: { action: toggleTheme }
+      }));
+  };
+
+  const handleLanguageToggle = () => {
+      window.dispatchEvent(new CustomEvent('triggerCircuitTransition', {
+          detail: { action: toggleLanguage }
+      }));
+  };
+
   const navbarContent = (
-    <header className={`navbar ${isScrolled ? 'scrolled' : ''}`} id="navbar">
+    <motion.header 
+        initial={{ y: -100 }} 
+        animate={{ y: 0 }} 
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} 
+        className={`navbar ${isScrolled ? 'scrolled' : ''}`} 
+        id="navbar"
+    >
         <div className="container nav-container">
             <Link to="/" className="logo" onClick={(e) => {
                 if (window.location.pathname === '/') {
                     e.preventDefault();
-                    const startPos = document.documentElement.scrollTop || document.body.scrollTop;
-                    if (startPos > 0) {
-                        document.documentElement.style.scrollBehavior = 'auto'; // Prevent CSS conflict
-                        const duration = 600;
-                        const startTime = performance.now();
-                        
-                        const animateScroll = (currentTime: number) => {
-                            const elapsed = currentTime - startTime;
-                            const progress = Math.min(elapsed / duration, 1);
-                            // Ease out cubic
-                            const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-                            window.scrollTo(0, startPos * (1 - easeOutCubic));
-                            
-                            if (progress < 1) {
-                                window.requestAnimationFrame(animateScroll);
-                            } else {
-                                document.documentElement.style.scrollBehavior = '';
-                            }
-                        };
-                        window.requestAnimationFrame(animateScroll);
-                    }
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
                 closeMenu();
             }}>
@@ -93,16 +92,19 @@ export default function Navbar() {
                 <span className="bar"></span>
                 <span className="bar"></span>
             </button>
-            <nav className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`} id="nav-links">
-                <a href="#" onClick={(e) => { e.preventDefault(); setIsAboutModalOpen(true); closeMenu(); }}>{t('navbar.about')}</a>
-                <a href="#" onClick={(e) => { e.preventDefault(); setIsServicesModalOpen(true); closeMenu(); }}>{t('navbar.services')}</a>
-                <a href="#" onClick={(e) => { e.preventDefault(); setIsProductsModalOpen(true); closeMenu(); }}>{t('navbar.products')}</a>
-                <a href="#" onClick={(e) => { e.preventDefault(); setIsContactModalOpen(true); closeMenu(); }}>{t('navbar.contact')}</a>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '1rem' }}>
-                    <button onClick={toggleLanguage} style={{ background: 'transparent', border: '1px solid var(--primary)', color: 'var(--text)', borderRadius: '20px', padding: '0.2rem 0.8rem', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 'bold' }}>
+            <motion.nav 
+                initial="hidden" animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } } }}
+                className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`} id="nav-links"
+            >
+                <motion.a variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }} href="#" onClick={(e) => { e.preventDefault(); setIsAboutModalOpen(true); closeMenu(); }}>{t('navbar.about')}</motion.a>
+                <motion.a variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }} href="#" onClick={(e) => { e.preventDefault(); setIsServicesModalOpen(true); closeMenu(); }}>{t('navbar.services')}</motion.a>
+                <motion.a variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }} href="#" onClick={(e) => { e.preventDefault(); setIsProductsModalOpen(true); closeMenu(); }}>{t('navbar.products')}</motion.a>
+                <motion.a variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }} href="#" onClick={(e) => { e.preventDefault(); setIsContactModalOpen(true); closeMenu(); }}>{t('navbar.contact')}</motion.a>
+                <motion.div variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }} style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '1rem' }}>
+                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleLanguageToggle} style={{ background: 'transparent', border: '1px solid var(--primary)', color: 'var(--text)', borderRadius: '20px', padding: '0.2rem 0.8rem', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 'bold' }}>
                         {t('navbar.language')}
-                    </button>
-                    <button onClick={toggleTheme} style={{ background: 'transparent', border: 'none', color: 'var(--text)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }} title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+                    </motion.button>
+                    <motion.button whileHover={{ rotate: 180 }} transition={{ duration: 0.4 }} onClick={handleThemeToggle} style={{ background: 'transparent', border: 'none', color: 'var(--text)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }} title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
                         {theme === 'dark' ? (
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <circle cx="12" cy="12" r="5"></circle>
@@ -120,18 +122,18 @@ export default function Navbar() {
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                             </svg>
                         )}
-                    </button>
-                </div>
-            </nav>
+                    </motion.button>
+                </motion.div>
+            </motion.nav>
         </div>
-    </header>
+    </motion.header>
   );
 
   const modalsContent = (
     <>
         {isAboutModalOpen && createPortal(
           <div className="modal-overlay" onClick={() => setIsAboutModalOpen(false)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', backdropFilter: 'blur(8px)', opacity: 1, animation: 'fadeIn 0.3s ease-out' }}>
-            <div className="glass-card modal-content" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1100px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.5, type: 'spring', bounce: 0.4 }} className="glass-card modal-content" data-lenis-prevent="true" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1100px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
                
                <div style={{ position: 'sticky', top: '0', background: theme === 'dark' ? 'rgba(6,9,19,0.9)' : 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '1rem 2rem', zIndex: 20, borderBottom: theme === 'dark' ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(0,0,0,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                    <h2 className="section-title" style={{ fontSize: '1.5rem', margin: 0 }}>{t('navbar.title_about')}</h2>
@@ -218,14 +220,14 @@ export default function Navbar() {
                         </div>
                    </div>
                </div>
-            </div>
+            </motion.div>
           </div>,
           document.body
         )}
 
         {isServicesModalOpen && createPortal(
           <div className="modal-overlay" onClick={() => setIsServicesModalOpen(false)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', backdropFilter: 'blur(8px)', opacity: 1, animation: 'fadeIn 0.3s ease-out' }}>
-            <div className="glass-card modal-content" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1100px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.5, type: 'spring', bounce: 0.4 }} className="glass-card modal-content" data-lenis-prevent="true" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1100px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
                
                <div style={{ position: 'sticky', top: '0', background: theme === 'dark' ? 'rgba(6,9,19,0.9)' : 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '1rem 2rem', zIndex: 20, borderBottom: theme === 'dark' ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(0,0,0,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                    <h2 className="section-title" style={{ fontSize: '1.5rem', margin: 0 }}>{t('navbar.title_services')}</h2>
@@ -315,14 +317,14 @@ export default function Navbar() {
                    </div>
 
                </div>
-            </div>
+            </motion.div>
           </div>,
           document.body
         )}
 
         {isProductsModalOpen && createPortal(
           <div className="modal-overlay" onClick={() => setIsProductsModalOpen(false)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', backdropFilter: 'blur(8px)', opacity: 1, animation: 'fadeIn 0.3s ease-out' }}>
-            <div className="glass-card modal-content" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1200px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.5, type: 'spring', bounce: 0.4 }} className="glass-card modal-content" data-lenis-prevent="true" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1200px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
                
                <div style={{ position: 'sticky', top: '0', background: theme === 'dark' ? 'rgba(6,9,19,0.9)' : 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '1rem 2rem', zIndex: 20, borderBottom: theme === 'dark' ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(0,0,0,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                    <h2 className="section-title" style={{ fontSize: '1.5rem', margin: 0 }}>{t('navbar.title_products')}</h2>
@@ -355,14 +357,14 @@ export default function Navbar() {
                        ))}
                    </div>
                </div>
-            </div>
+            </motion.div>
           </div>,
           document.body
         )}
 
         {isContactModalOpen && createPortal(
           <div className="modal-overlay" onClick={() => setIsContactModalOpen(false)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.85)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', backdropFilter: 'blur(8px)', opacity: 1, animation: 'fadeIn 0.3s ease-out' }}>
-            <div className="glass-card modal-content" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1000px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.5, type: 'spring', bounce: 0.4 }} className="glass-card modal-content" data-lenis-prevent="true" onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: '1000px', maxHeight: '90vh', overflowY: 'auto', padding: '0', position: 'relative', border: '1px solid rgba(0, 229, 255, 0.2)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', borderRadius: '16px' }}>
                
                <div style={{ position: 'sticky', top: '0', background: theme === 'dark' ? 'rgba(6,9,19,0.9)' : 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)', padding: '1rem 2rem', zIndex: 20, borderBottom: theme === 'dark' ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(0,0,0,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                    <h2 className="section-title" style={{ fontSize: '1.5rem', margin: 0 }}>{t('navbar.title_contact')}</h2>
@@ -438,7 +440,7 @@ export default function Navbar() {
                        </div>
                    </div>
                </div>
-            </div>
+            </motion.div>
           </div>,
           document.body
         )}

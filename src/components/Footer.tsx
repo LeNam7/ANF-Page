@@ -1,6 +1,7 @@
 
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -31,27 +32,34 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="container footer-container" style={{ paddingBottom: '3rem', borderTop: 'none', gap: '4rem' }}>
-              <div className="footer-col brand-col">
+          <motion.div 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true, margin: "-50px" }} 
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+              className="container footer-container" 
+              style={{ paddingBottom: '3rem', borderTop: 'none', gap: '4rem' }}
+          >
+              <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="footer-col brand-col">
                   <p style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '1.5rem', fontWeight: 'bold' }}>Công ty TNHH ANF Technology</p>
                   <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>{t('footer.addressText')}</p>
                   <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', lineHeight: '1.6' }}>Hotline: (+84) 989 92 92 69</p>
                   <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', lineHeight: '1.6' }}>Email: anhdt@anf-technology.com</p>
-              </div>
-              <div className="footer-col links-col">
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="footer-col links-col">
                   <h4 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.1rem' }}>{t('footer.companyText')}</h4>
                   <Link to="/gioi-thieu" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.about')}</Link>
                   <a href={isHome ? '#products' : '/#products'} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.products')}</a>
                   <a href="#" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('footer.termsText')}</a>
                   <a href="#" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('footer.privacyText')}</a>
-              </div>
-              <div className="footer-col links-col">
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="footer-col links-col">
                   <h4 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.1rem' }}>{t('footer.servicesText')}</h4>
                   <a href={isHome ? '#services' : '/#services'} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.services')}</a>
                   <a href={isHome ? '#contact' : '/#contact'} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.contact')}</a>
                   <a href="#" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>FAQ</a>
-              </div>
-          </div>
+              </motion.div>
+          </motion.div>
           
           <div className="footer-bottom container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '2.5rem 1.5rem', color: 'rgba(255,255,255,0.5)' }}>
               <div className="social-icons" style={{ display: 'flex', gap: '1rem' }}>
