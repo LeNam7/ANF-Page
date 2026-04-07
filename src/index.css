@@ -995,6 +995,12 @@ body.light-mode .modal-content {
     background: rgba(255, 255, 255, 0.95) !important;
 }
 
+body.light-mode .modal-content p,
+body.light-mode .modal-content li,
+body.light-mode .modal-content .text-gray {
+    color: #475569 !important;
+}
+
 body.light-mode .product-modal-body p {
     color: #475569 !important;
 }
@@ -1095,3 +1101,9 @@ g[transform="translate(480, 120)"] { --tx: 480px; --ty: 120px; }
 }
 
 
+@keyframes kenburns-effect { 0% { transform: scale(1) translate(0,0); } 50% { transform: scale(1.08) translate(-1%, -1%); } 100% { transform: scale(1) translate(0,0); } }
+
+.anim-kenburns { animation: fadeIn 0.5s ease-out forwards, kenburns-effect 12s ease-in-out infinite alternate !important; transform-origin: center; }
+@keyframes kenburns-effect { 0% { transform: scale(1); } 100% { transform: scale(1.06); } }
+@keyframes border-pulse { 0% { border-color: rgba(0, 229, 255, 0.2); box-shadow: 0 10px 30px rgba(0, 229, 255, 0.05); } 50% { border-color: rgba(0, 229, 255, 0.6); box-shadow: 0 15px 40px rgba(0, 229, 255, 0.15); } 100% { border-color: rgba(0, 229, 255, 0.2); box-shadow: 0 10px 30px rgba(0, 229, 255, 0.05); } }
+.tab-item.active { animation: border-pulse 2.5s infinite ease-in-out; }

@@ -8,9 +8,11 @@ interface ProductDetailsModalProps {
 }
 
 import { useLanguage } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function ProductDetailsModal({ product, onClose }: ProductDetailsModalProps) {
   const { t, language } = useLanguage();
+  const { theme } = useTheme();
   useEffect(() => {
     // We already have main navbar controlling some overflow, but let's Ensure body overflow is hidden
     document.body.style.overflow = 'hidden';
@@ -35,19 +37,21 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
         
         {/* Header (Sticky) */}
         <div style={{
-          position: 'sticky', top: '0', background: 'rgba(6,9,19,0.9)', 
+          position: 'sticky', top: '0', background: theme === 'dark' ? 'rgba(6,9,19,0.9)' : 'rgba(255,255,255,0.9)', 
           backdropFilter: 'blur(10px)', padding: '1rem 2rem', zIndex: 20, 
-          borderBottom: '1px solid rgba(255,255,255,0.05)', 
+          borderBottom: theme === 'dark' ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(0,0,0,0.1)', 
           display: 'flex', justifyContent: 'space-between', alignItems: 'center'
         }}>
           <h2 className="section-title" style={{ fontSize: '1.5rem', margin: 0 }}>{t('products.modal_title')}</h2>
           <button onClick={onClose} style={{
-            background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', 
-            color: '#fff', width: '36px', height: '36px', borderRadius: '50%', 
+            background: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)', 
+            border: theme === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.1)', 
+            color: theme === 'dark' ? '#fff' : '#1e293b', 
+            width: '36px', height: '36px', borderRadius: '50%', 
             fontSize: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', 
             justifyContent: 'center', transition: 'all 0.3s'
-          }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.borderColor = '#ef4444'; }} 
-             onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; }}>
+          }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.borderColor = '#ef4444'; e.currentTarget.style.color = '#fff'; }} 
+             onMouseLeave={(e) => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'; e.currentTarget.style.borderColor = theme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'; e.currentTarget.style.color = theme === 'dark' ? '#fff' : '#1e293b'; }}>
             &times;
           </button>
         </div>

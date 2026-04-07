@@ -68,8 +68,20 @@ export default function Services() {
                     </div>
                 </div>
                 {/* Right Image */}
-                <div className="tab-image glass-card" style={{ padding: 0, overflow: 'hidden' }}>
-                    <img src="/features-laptop.webp" alt="Technology Solutions" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div className="tab-image glass-card" style={{ padding: 0, overflow: 'hidden', position: 'relative' }}>
+                    <img 
+                      key={activeTab}
+                      src={
+                        activeTab === 1 ? "/services/service_ai_integration.png" :
+                        activeTab === 2 ? "/services/service_ai_models.png" :
+                        activeTab === 3 ? "/services/service_tech_products.png" :
+                        activeTab === 4 ? "/services/service_outsourcing.png" :
+                        "/services/service_digital_transformation.png"
+                      } 
+                      alt="Technology Solutions" 
+                      className="anim-kenburns"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
                 </div>
             </div>
 
