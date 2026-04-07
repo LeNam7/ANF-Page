@@ -1,0 +1,112 @@
+import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+
+export default function Services() {
+  const { t } = useLanguage();
+  const [activeTab, setActiveTab] = useState(1);
+
+  return (
+    <section id="services" className="features-ext section-padding">
+        <div className="container">
+            <div className="text-center animate-on-scroll" style={{ textAlign: 'center' }}>
+                <p className="hero-label text-primary uppercase tracker" style={{ justifyContent: 'center', marginBottom: '0.5rem' }}>{t('navbar.services').toUpperCase()}</p>
+                <h2 className="section-title" style={{ marginBottom: '3rem', textAlign: 'center' }}>{t('services.modal.activities')}</h2>
+            </div>
+            
+            <div className="features-tabs-grid animate-on-scroll">
+                {/* Left Tabs */}
+                <div className="services-tabs" id="services-tabs">
+                    {/* Tab 1 */}
+                    <div className={`tab-item glass-card ${activeTab === 1 ? 'active' : ''}`} onClick={() => setActiveTab(1)} onMouseEnter={() => setActiveTab(1)}>
+                        <div className="tab-header">
+                            <span className="tab-icon" style={{ backgroundColor: '#0ea5e9' }}></span>
+                            <h3 className="tab-title">{t('services.modal.ai_integration_label')}</h3>
+                        </div>
+                        <div className="tab-body" id="tab-body-1" style={{ display: activeTab === 1 ? 'block' : 'none' }}>
+                            <p>{t('services.modal.ai_integration_desc')}</p>
+                        </div>
+                    </div>
+                    {/* Tab 2 */}
+                    <div className={`tab-item glass-card ${activeTab === 2 ? 'active' : ''}`} onClick={() => setActiveTab(2)} onMouseEnter={() => setActiveTab(2)}>
+                        <div className="tab-header">
+                            <span className="tab-icon" style={{ backgroundColor: '#a855f7' }}></span>
+                            <h3 className="tab-title">{t('services.modal.model_label')}</h3>
+                        </div>
+                        <div className="tab-body" id="tab-body-2" style={{ display: activeTab === 2 ? 'block' : 'none' }}>
+                            <p>{t('services.modal.model_desc')}</p>
+                        </div>
+                    </div>
+                    {/* Tab 3 */}
+                    <div className={`tab-item glass-card ${activeTab === 3 ? 'active' : ''}`} onClick={() => setActiveTab(3)} onMouseEnter={() => setActiveTab(3)}>
+                        <div className="tab-header">
+                            <span className="tab-icon" style={{ backgroundColor: '#ef4444' }}></span>
+                            <h3 className="tab-title">{t('services.modal.product_label')}</h3>
+                        </div>
+                        <div className="tab-body" id="tab-body-3" style={{ display: activeTab === 3 ? 'block' : 'none' }}>
+                            <p>{t('services.modal.product_desc')}</p>
+                        </div>
+                    </div>
+                    {/* Tab 4 */}
+                    <div className={`tab-item glass-card ${activeTab === 4 ? 'active' : ''}`} onClick={() => setActiveTab(4)} onMouseEnter={() => setActiveTab(4)}>
+                        <div className="tab-header">
+                            <span className="tab-icon" style={{ backgroundColor: '#3b82f6' }}></span>
+                            <h3 className="tab-title">{t('services.modal.outsourcing_label')}</h3>
+                        </div>
+                        <div className="tab-body" id="tab-body-4" style={{ display: activeTab === 4 ? 'block' : 'none' }}>
+                            <p>{t('services.modal.outsourcing_desc')}</p>
+                        </div>
+                    </div>
+                    {/* Tab 5 */}
+                    <div className={`tab-item glass-card ${activeTab === 5 ? 'active' : ''}`} onClick={() => setActiveTab(5)} onMouseEnter={() => setActiveTab(5)}>
+                        <div className="tab-header">
+                            <span className="tab-icon" style={{ backgroundColor: '#22c55e' }}></span>
+                            <h3 className="tab-title">{t('services.modal.dx_label')}</h3>
+                        </div>
+                        <div className="tab-body" id="tab-body-5" style={{ display: activeTab === 5 ? 'block' : 'none' }}>
+                            <p>{t('services.modal.dx_desc1')}</p>
+                        </div>
+                    </div>
+                </div>
+                {/* Right Image */}
+                <div className="tab-image glass-card" style={{ padding: 0, overflow: 'hidden' }}>
+                    <img src="/features-laptop.webp" alt="Technology Solutions" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+            </div>
+
+            {/* 6 Grid Cards */}
+            <div className="features-grid animate-on-scroll" style={{ marginTop: '4rem' }}>
+                <div className="feature-card glass-card text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
+                    <div className="feat-icon-wrapper" style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+                    <h4 style={{ fontSize: '1.1rem', margin: 0 }}>{t('about.modal.f1_title')}</h4>
+                    <p style={{ fontSize: '0.95rem', color: '#9ca3af', margin: 0, lineHeight: 1.5 }}>{t('about.modal.f1_desc')}</p>
+                </div>
+                <div className="feature-card glass-card text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
+                    <div className="feat-icon-wrapper" style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+                    <h4 style={{ fontSize: '1.1rem', margin: 0 }}>{t('about.modal.f2_title')}</h4>
+                    <p style={{ fontSize: '0.95rem', color: '#9ca3af', margin: 0, lineHeight: 1.5 }}>{t('about.modal.f2_desc')}</p>
+                </div>
+                <div className="feature-card glass-card text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
+                    <div className="feat-icon-wrapper" style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></svg></div>
+                    <h4 style={{ fontSize: '1.1rem', margin: 0 }}>{t('about.modal.f3_title')}</h4>
+                    <p style={{ fontSize: '0.95rem', color: '#9ca3af', margin: 0, lineHeight: 1.5 }}>{t('about.modal.f3_desc')}</p>
+                </div>
+                <div className="feature-card glass-card text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
+                    <div className="feat-icon-wrapper" style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                    <h4 style={{ fontSize: '1.1rem', margin: 0 }}>{t('about.modal.f4_title')}</h4>
+                    <p style={{ fontSize: '0.95rem', color: '#9ca3af', margin: 0, lineHeight: 1.5 }}>{t('about.modal.f4_desc')}</p>
+                </div>
+                <div className="feature-card glass-card text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
+                    <div className="feat-icon-wrapper" style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <h4 style={{ fontSize: '1.1rem', margin: 0 }}>{t('about.modal.f5_title')}</h4>
+                    <p style={{ fontSize: '0.95rem', color: '#9ca3af', margin: 0, lineHeight: 1.5 }}>{t('about.modal.f5_desc')}</p>
+                </div>
+                <div className="feature-card glass-card text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
+                    <div className="feat-icon-wrapper" style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+                    <h4 style={{ fontSize: '1.1rem', margin: 0 }}>{t('about.modal.f6_title')}</h4>
+                    <p style={{ fontSize: '0.95rem', color: '#9ca3af', margin: 0, lineHeight: 1.5 }}>{t('about.modal.f6_desc')}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+  );
+}
