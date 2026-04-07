@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { Bot, BrainCircuit, MonitorSmartphone, Users, Rocket } from 'lucide-react';
 
 export default function Services() {
   const { t } = useLanguage();
@@ -19,7 +20,7 @@ export default function Services() {
                     {/* Tab 1 */}
                     <div className={`tab-item glass-card ${activeTab === 1 ? 'active' : ''}`} onClick={() => setActiveTab(1)} onMouseEnter={() => setActiveTab(1)}>
                         <div className="tab-header">
-                            <span className="tab-icon" style={{ backgroundColor: '#0ea5e9' }}></span>
+                            <div className="gif-icon gif-icon-1"><Bot size={20} /></div>
                             <h3 className="tab-title">{t('services.modal.ai_integration_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-1" style={{ display: activeTab === 1 ? 'block' : 'none' }}>
@@ -29,7 +30,7 @@ export default function Services() {
                     {/* Tab 2 */}
                     <div className={`tab-item glass-card ${activeTab === 2 ? 'active' : ''}`} onClick={() => setActiveTab(2)} onMouseEnter={() => setActiveTab(2)}>
                         <div className="tab-header">
-                            <span className="tab-icon" style={{ backgroundColor: '#a855f7' }}></span>
+                            <div className="gif-icon gif-icon-2"><BrainCircuit size={20} /></div>
                             <h3 className="tab-title">{t('services.modal.model_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-2" style={{ display: activeTab === 2 ? 'block' : 'none' }}>
@@ -39,7 +40,7 @@ export default function Services() {
                     {/* Tab 3 */}
                     <div className={`tab-item glass-card ${activeTab === 3 ? 'active' : ''}`} onClick={() => setActiveTab(3)} onMouseEnter={() => setActiveTab(3)}>
                         <div className="tab-header">
-                            <span className="tab-icon" style={{ backgroundColor: '#ef4444' }}></span>
+                            <div className="gif-icon gif-icon-3"><MonitorSmartphone size={20} /></div>
                             <h3 className="tab-title">{t('services.modal.product_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-3" style={{ display: activeTab === 3 ? 'block' : 'none' }}>
@@ -49,7 +50,7 @@ export default function Services() {
                     {/* Tab 4 */}
                     <div className={`tab-item glass-card ${activeTab === 4 ? 'active' : ''}`} onClick={() => setActiveTab(4)} onMouseEnter={() => setActiveTab(4)}>
                         <div className="tab-header">
-                            <span className="tab-icon" style={{ backgroundColor: '#3b82f6' }}></span>
+                            <div className="gif-icon gif-icon-4"><Users size={20} /></div>
                             <h3 className="tab-title">{t('services.modal.outsourcing_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-4" style={{ display: activeTab === 4 ? 'block' : 'none' }}>
@@ -59,7 +60,7 @@ export default function Services() {
                     {/* Tab 5 */}
                     <div className={`tab-item glass-card ${activeTab === 5 ? 'active' : ''}`} onClick={() => setActiveTab(5)} onMouseEnter={() => setActiveTab(5)}>
                         <div className="tab-header">
-                            <span className="tab-icon" style={{ backgroundColor: '#22c55e' }}></span>
+                            <div className="gif-icon gif-icon-5"><Rocket size={20} /></div>
                             <h3 className="tab-title">{t('services.modal.dx_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-5" style={{ display: activeTab === 5 ? 'block' : 'none' }}>
@@ -69,19 +70,28 @@ export default function Services() {
                 </div>
                 {/* Right Image */}
                 <div className="tab-image glass-card" style={{ padding: 0, overflow: 'hidden', position: 'relative' }}>
-                    <img 
-                      key={activeTab}
-                      src={
-                        activeTab === 1 ? "/services/service_ai_integration.png" :
-                        activeTab === 2 ? "/services/service_ai_models.png" :
-                        activeTab === 3 ? "/services/service_tech_products.png" :
-                        activeTab === 4 ? "/services/service_outsourcing.png" :
-                        "/services/service_digital_transformation.png"
-                      } 
-                      alt="Technology Solutions" 
-                      className="anim-kenburns"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                    />
+                    <div className="image-scanner"></div>
+                    {[1, 2, 3, 4].includes(activeTab) ? (
+                      <video 
+                        key={`video-${activeTab}`}
+                        src={`/services/service_video_${activeTab}.mp4`} 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline
+                        disablePictureInPicture
+                        controlsList="nodownload nofullscreen noremoteplayback"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', pointerEvents: 'none' }} 
+                      />
+                    ) : (
+                      <img 
+                        key={activeTab}
+                        src="/services/service_digital_transformation.png"
+                        alt="Technology Solutions" 
+                        className="anim-kenburns"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                      />
+                    )}
                 </div>
             </div>
 
