@@ -17,6 +17,11 @@ export default function CircuitCursor() {
     const { theme } = useTheme();
 
     useEffect(() => {
+        // Hoàn toàn vô hiệu hóa trên điện thoại di động để cứu hiệu năng GPU và CPU
+        if (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches) {
+            return;
+        }
+
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d', { alpha: true });
@@ -201,6 +206,10 @@ export default function CircuitCursor() {
             cancelAnimationFrame(animationId);
         };
     }, [theme]);
+
+    // Hoàn toàn không render mã HTML của Canvas trên điện thoại
+    const isMobile = typeof window !== 'undefined' && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches);
+    if (isMobile) return null;
 
     return (
         <canvas
