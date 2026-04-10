@@ -17,37 +17,46 @@ export default function CircuitCursor() {
     const { theme } = useTheme();
 
     useEffect(() => {
-        // Hoàn toàn vô hiệu hóa trên điện thoại di động để cứu hiệu năng GPU và CPU
-        if (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches) {
-            return;
-        }
-
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d', { alpha: true });
         if (!ctx) return;
 
+        // Giảm phân giải trên mobile để tối ưu hóa FPS
+        const isMobile = window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches;
+        const scale = isMobile ? 0.3 : 1; 
+
         let width = window.innerWidth;
         let height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        ctx.scale(scale, scale);
 
         const handleResize = () => {
             width = window.innerWidth;
             height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+            canvas.width = width * scale;
+            canvas.height = height * scale;
+            ctx.scale(scale, scale);
         };
         window.addEventListener('resize', handleResize);
 
         const points: Point[] = [];
         const branches: Branch[] = [];
         let lastPoint: Point | null = null;
+        
+        let pointCount = 0;
 
         const maxLife = 500; // Vòng đời vừa đủ cho đuôi mờ dần
         const distThreshold = 18; // Khoảng cách giữa các chốt vuông
 
         const addPoint = (x: number, y: number) => {
+            // Giới hạn tần suất xử lý trên mobile
+            if (isMobile) {
+                pointCount++;
+                if (pointCount % 3 !== 0) return; // Bỏ qua 2/3 số điểm chạm trên mobile để giảm tải
+            }
+
             const now = performance.now();
             
             if (!lastPoint) {
@@ -69,7 +78,7 @@ export default function CircuitCursor() {
                 const newY = lastPoint.y + Math.sin(snappedAngle) * distThreshold;
 
                 // Tẻ nhánh phụ hình chữ L hoặc Z đặc trưng của mạch chíp
-                if (Math.random() < 0.3) {
+                if (Math.random() < (isMobile ? 0.1 : 0.3)) { // Ít tia phụ trên mobile hơn
                     const dir = Math.random() > 0.5 ? Math.PI / 2 : -Math.PI / 2;
                     const a1 = snappedAngle + dir; // Góc vuông góc với thân chính
                     const L1 = 10 + Math.random() * 20;
@@ -159,7 +168,7 @@ export default function CircuitCursor() {
                 ctx.strokeStyle = `rgba(${rgb}, 0.85)`;
                 ctx.lineWidth = 2; // Đường điện tĩnh nét, thanh
                 ctx.shadowColor = `rgba(${rgb}, 0.7)`;
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = isMobile ? 0 : 8; // Tắt shadow trên mobile
                 ctx.lineJoin = 'miter';
                 ctx.miterLimit = 2;
                 ctx.stroke();
@@ -189,7 +198,7 @@ export default function CircuitCursor() {
                 ctx.arc(head.x, head.y, 4, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(255, 255, 255, 0.9)`;
                 ctx.shadowColor = `rgba(${rgb}, 1)`;
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = isMobile ? 0 : 15;
                 ctx.fill();
                 ctx.shadowBlur = 0;
             }
@@ -206,10 +215,6 @@ export default function CircuitCursor() {
             cancelAnimationFrame(animationId);
         };
     }, [theme]);
-
-    // Hoàn toàn không render mã HTML của Canvas trên điện thoại
-    const isMobile = typeof window !== 'undefined' && (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches);
-    if (isMobile) return null;
 
     return (
         <canvas
