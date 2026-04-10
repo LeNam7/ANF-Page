@@ -70,10 +70,15 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
               .meta-grid { display: grid; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}; }
               .meta-item { display: flex; align-items: flex-start; gap: 1rem; background: ${theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)'}; padding: 1rem; border-radius: 8px; border: 1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}; }
               .meta-label { font-weight: 600; color: ${theme === 'dark' ? '#00e5ff' : '#0284c7'}; min-width: 150px; }
-              .meta-value { color: ${theme === 'dark' ? '#d1d5db' : '#374151'}; }
+              .meta-value { color: ${theme === 'dark' ? '#d1d5db' : '#374151'}; word-break: break-word; }
               
               @media (min-width: 768px) {
                 .meta-grid { grid-template-columns: 1fr 1fr; }
+              }
+              @media (max-width: 768px) {
+                .product-modal-body { padding: 1.5rem 1rem !important; }
+                .product-modal-body h1 { font-size: 1.8rem !important; }
+                .meta-item { flex-direction: column; gap: 0.25rem; }
               }
              `}
           </style>

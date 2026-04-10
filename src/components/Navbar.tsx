@@ -140,11 +140,16 @@ export default function Navbar() {
                    <button onClick={() => setIsAboutModalOpen(false)} style={{ background: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)', border: theme === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.1)', color: theme === 'dark' ? '#fff' : '#1e293b', width: '36px', height: '36px', borderRadius: '50%', fontSize: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.borderColor = '#ef4444'; e.currentTarget.style.color = '#fff'; }} onMouseLeave={(e) => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'; e.currentTarget.style.borderColor = theme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'; e.currentTarget.style.color = theme === 'dark' ? '#fff' : '#1e293b'; }}>&times;</button>
                </div>
                
-               <div style={{ padding: '3rem' }}>
+               <div className="modal-body-custom">
                    <style>
                        {`
+                       .modal-body-custom { padding: 3rem; }
                        .modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
-                       @media (max-width: 768px) { .modal-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; } .modal-row-reverse > div:first-child { order: 2; } }
+                       @media (max-width: 768px) { 
+                           .modal-body-custom { padding: 1.5rem 1rem !important; }
+                           .modal-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; } 
+                           .modal-row-reverse > div:first-child { order: 2; } 
+                       }
                        `}
                    </style>
 
@@ -234,7 +239,7 @@ export default function Navbar() {
                    <button onClick={() => setIsServicesModalOpen(false)} style={{ background: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)', border: theme === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.1)', color: theme === 'dark' ? '#fff' : '#1e293b', width: '36px', height: '36px', borderRadius: '50%', fontSize: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.borderColor = '#ef4444'; e.currentTarget.style.color = '#fff'; }} onMouseLeave={(e) => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'; e.currentTarget.style.borderColor = theme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'; e.currentTarget.style.color = theme === 'dark' ? '#fff' : '#1e293b'; }}>&times;</button>
                </div>
                
-               <div style={{ padding: '3rem' }}>
+               <div className="modal-body-custom">
                    <div style={{ textAlign: 'center', marginBottom: '4rem', marginTop: '-20px' }}>
                       <span className="hero-label text-primary uppercase tracker" style={{ justifyContent: 'center', marginBottom: '0.5rem', fontSize: '0.8rem' }}>{t('services.modal.prof_services')}</span>
                       <h2 className="section-title" style={{ fontSize: '2.5rem', margin: 0 }}>{t('services.modal.activities')}</h2>
@@ -331,14 +336,14 @@ export default function Navbar() {
                    <button onClick={() => setIsProductsModalOpen(false)} style={{ background: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)', border: theme === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.1)', color: theme === 'dark' ? '#fff' : '#1e293b', width: '36px', height: '36px', borderRadius: '50%', fontSize: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.borderColor = '#ef4444'; e.currentTarget.style.color = '#fff'; }} onMouseLeave={(e) => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'; e.currentTarget.style.borderColor = theme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'; e.currentTarget.style.color = theme === 'dark' ? '#fff' : '#1e293b'; }}>&times;</button>
                </div>
                
-               <div style={{ padding: '3rem' }}>
+               <div className="modal-body-custom">
                    <div style={{ textAlign: 'center', marginBottom: '3rem', marginTop: '-20px' }}>
                       <span className="hero-label text-primary uppercase tracker" style={{ justifyContent: 'center', marginBottom: '0.5rem', fontSize: '0.8rem' }}>{t('products.label')}</span>
                       <h2 className="section-title" style={{ fontSize: '2.5rem', margin: 0 }}>{t('products.title')}</h2>
                       <p style={{ color: '#9ca3af', maxWidth: '600px', margin: '1rem auto 0' }}>{t('products.desc')}</p>
                    </div>
 
-                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
+                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
                        {products.map(product => (
                          <div 
                            key={product.id} 
@@ -371,7 +376,7 @@ export default function Navbar() {
                    <button onClick={() => setIsContactModalOpen(false)} style={{ background: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)', border: theme === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.1)', color: theme === 'dark' ? '#fff' : '#1e293b', width: '36px', height: '36px', borderRadius: '50%', fontSize: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.borderColor = '#ef4444'; e.currentTarget.style.color = '#fff'; }} onMouseLeave={(e) => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'; e.currentTarget.style.borderColor = theme === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'; e.currentTarget.style.color = theme === 'dark' ? '#fff' : '#1e293b'; }}>&times;</button>
                </div>
                
-               <div style={{ padding: '3rem' }}>
+               <div className="modal-body-custom">
                    <div style={{ textAlign: 'center', marginBottom: '3rem', marginTop: '-20px' }}>
                       <span className="hero-label text-primary uppercase tracker" style={{ justifyContent: 'center', marginBottom: '0.5rem', fontSize: '0.8rem' }}>{t('contact.label')}</span>
                       <h2 className="section-title" style={{ fontSize: '2.5rem', margin: 0 }}>{t('contact.title')}</h2>
