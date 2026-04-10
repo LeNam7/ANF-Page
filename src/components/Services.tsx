@@ -20,7 +20,7 @@ export default function Services() {
     // Sử dụng file MP3 đọc tĩnh đã được tải sẵn từ server Google
     // Đảm bảo hoạt động 100% hoàn hảo và không bao giờ bị chặn hay đọc nhầm tiếng Anh
     const langCode = language === 'en' ? 'en' : 'vi';
-    currentAudio = new Audio(`/tts/${langCode}_${index}.mp3`);
+    currentAudio = new Audio(`${import.meta.env.BASE_URL}tts/${langCode}_${index}.mp3`);
     
     currentAudio.play().catch(err => {
       console.warn("Autoplay block:", err);
