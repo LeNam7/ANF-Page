@@ -43,7 +43,7 @@ export default function Hero() {
                     <motion.h1 variants={itemVariants} className="hero-title">{t('hero.title1')} <span>{t('hero.title2')}</span></motion.h1>
                     <motion.p variants={itemVariants} className="hero-subtitle">{t('hero.subtitle')}</motion.p>
                     <motion.div variants={itemVariants} className="hero-cta">
-                        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('openContactModal')); }} className="btn btn-primary">{t('hero.cta_primary')} &rarr;</motion.a>
+                        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#products" className="btn btn-primary">{t('hero.cta_primary')} &rarr;</motion.a>
                         <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('openServicesModal')); }} className="btn btn-secondary">{t('hero.cta_secondary')} &rarr;</motion.a>
                     </motion.div>
                 </motion.div>
