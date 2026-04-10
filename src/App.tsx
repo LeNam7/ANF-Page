@@ -48,7 +48,7 @@ function App() {
     <SmoothScrolling>
       <ThemeProvider>
         <LanguageProvider>
-          <BrowserRouter>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <ScrollToHash />
             <ThemeTransition />
             <CircuitCursor />
