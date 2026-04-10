@@ -33,7 +33,7 @@ export const products: Product[] = [
     enTitle: "ANF_Bot - Smart AI Assistant (ClawBot)",
     description: "Trợ lý ảo thông minh dựa trên công nghệ AI tiên tiến, hỗ trợ tự động hóa các tác vụ vận hành và chăm sóc khách hàng doanh nghiệp.",
     enDescription: "Smart AI virtual assistant based on advanced AI technologies, designed to automate operational tasks and customer care systems.",
-    image: "/products/anf_bot_ai.png",
+    image: `${import.meta.env.BASE_URL}products/anf_bot_ai.png`,
     tags: ["ai", "assistant", "chatbot", "clawbot"],
     content: [
       { type: 'paragraph', text: 'ANF_Bot (được biết đến với tên gọi ClawBot) là giải pháp Trợ lý ảo thông minh (AI Assistant) do đội ngũ ANF Technology nghiên cứu và phát triển. Với khả năng xử lý ngôn ngữ tự nhiên vượt trội, ANF_Bot giúp doanh nghiệp rút ngắn thời gian xử lý công việc và tăng trải nghiệm người dùng.' },
@@ -74,7 +74,7 @@ export const products: Product[] = [
     link: "https://dimuonnoi.vn/",
     description: "DIMUONNOI là trang web đặt chỗ và so sánh du lịch trực tuyến cung cấp cho người dùng nhiều lựa chọn di chuyển, bao gồm xe buýt, tàu hỏa và chuyến bay",
     enDescription: "DIMUONNOI is an online travel booking and comparison website providing users with a variety of transportation options including buses, trains, and flights.",
-    image: "/products/product_01.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_01.jpg`,
     tags: ["dimuonnoi", "travel", "comparison", "so-sanh", "hanh-trinh"],
     content: [
       { type: 'paragraph', text: 'DIMUONNOI là trang web đặt chỗ và so sánh du lịch trực tuyến cung cấp cho người dùng nhiều lựa chọn di chuyển, bao gồm xe buýt, tàu hỏa và chuyến bay. Người dùng có thể dễ dàng so sánh và lựa chọn phương án phù hợp nhất với nhu cầu của mình.' },
@@ -102,7 +102,7 @@ export const products: Product[] = [
     enTitle: "CRM Customer Management System",
     description: "Hệ thống quản lý thông tin khách hàng tập trung, cung cấp các tính năng quản lý thông tin khách hàng, chiến dịch marketing cũng như phân tích hành vi khách hàng",
     enDescription: "Centralized customer information management system providing features for managing customer info, marketing campaigns, and analyzing behavior.",
-    image: "/products/product_03.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_03.jpg`,
     date: "2022-04-04",
     tags: ["crm", "erp", "customer", "management"],
     content: [
@@ -167,7 +167,7 @@ export const products: Product[] = [
     enTitle: "NFT Mining System",
     description: "Hệ thống tạo NFT từ hình ảnh và sử dụng trên hệ sinh thái blockchain.",
     enDescription: "System for creating NFTs from images and utilizing them in the blockchain ecosystem.",
-    image: "/products/product_02.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_02.jpg`,
     date: "2022-06-30",
     tags: ["nft", "blockchain"],
     content: [
@@ -200,7 +200,7 @@ export const products: Product[] = [
     enTitle: "Geographic Information System - GIS",
     description: "Hệ thống thông tin địa lý của chúng tôi đã được tích hợp trong nhiều lĩnh vực hoạt động hành chính và cung cấp giải pháp hiệu quả.",
     enDescription: "Our geographic information system has been integrated into various public administration fields and provides efficient solutions.",
-    image: "/products/product_04.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_04.jpg`,
     date: "2021-07-31",
     tags: ["gis"],
     content: [
@@ -229,7 +229,7 @@ export const products: Product[] = [
     enTitle: "Virtual KOL, AI Assistant",
     description: "KOL ảo cung cấp giải pháp thay thế hiệu quả về mặt chi phí và rủi ro thấp cho việc thuê những KOL thực sự để đại diện cho thương hiệu.",
     enDescription: "Virtual KOLs provide a cost-effective and low-risk alternative to hiring real KOLs to represent the brand.",
-    image: "/products/product_05.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_05.jpg`,
     date: "2023-07-31",
     tags: ["kol", "ai", "virtual", "influencer"],
     content: [
@@ -260,7 +260,7 @@ export const products: Product[] = [
     enTitle: "MeGo - Smart Ride-Hailing Solution",
     description: "MeGo cung cấp dịch vụ đặt xe thông minh tại Việt Nam, nơi bạn có thể gọi xe khi ở bất cứ đâu và bất cứ khi nào. Tài xế MeGo sẽ luôn có mặt nhanh chóng và cùng bạn thực hiện chuyến hành trình.",
     enDescription: "MeGo provides smart ride-hailing services in Vietnam, where you can hail a ride anywhere and anytime. MeGo drivers will always arrive promptly.",
-    image: "/products/product_06.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_06.jpg`,
     date: "2022-05-16",
     tags: ["mego", "dat-xe", "ung-dung-dat-xe"],
     content: [
@@ -299,7 +299,7 @@ export const products: Product[] = [
     enTitle: "MeHome - Building Management Application",
     description: "Ứng dụng quản lý tòa nhà MeHome đem đến giải pháp thông minh cho các chung cư, tòa nhà dân cư, cung cấp các tiện ích quản lý tiên tiến.",
     enDescription: "The MeHome building management application provides smart solutions for apartments and residential buildings, offering advanced management utilities.",
-    image: "/products/product_07.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_07.jpg`,
     date: "2022-08-31",
     tags: ["quan-ly-chung-cu", "mehome"],
     content: [
@@ -350,7 +350,7 @@ export const products: Product[] = [
     enTitle: "Provincial Data Sharing Platform",
     description: "Nền tảng chia sẻ dữ liệu tích hợp, liên tỉnh, cho phép các cơ quan hành chính cấp tỉnh chia sẻ dữ liệu, thông tin, tài liệu trong quá trình hoạt động.",
     enDescription: "Integrated, inter-provincial data sharing platform allowing provincial administrative agencies to share data, info, and documents during operations.",
-    image: "/products/product_08.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_08.jpg`,
     date: "2022-07-31",
     tags: ["lgsp", "chia-se-du-lieu"],
     content: [
@@ -381,7 +381,7 @@ export const products: Product[] = [
     enTitle: "Centralized Exchange Platform",
     description: "Sàn giao dịch tiền điện tử tập trung đầy đủ, hỗ trợ cả tiền điện tử và tiền pháp định.",
     enDescription: "A fully centralized cryptocurrency exchange supporting both cryptocurrency and fiat money.",
-    image: "/products/product_09.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_09.jpg`,
     date: "2022-04-04",
     tags: ["exchange", "platform", "exchange-platform"],
     content: [
@@ -412,7 +412,7 @@ export const products: Product[] = [
     enTitle: "Electronic Newsroom System",
     description: "Hệ thống biên tập và quản lý tin bài phục vụ cho các trang báo điện tử, cung cấp đầy đủ quy trình biên tập, quản lý và xuất bản tin bài với nhiều định dạng tin khác nhau.",
     enDescription: "Editorial and news management system for online newspapers, providing a complete workflow for editing, managing, and publishing news.",
-    image: "/products/product_10.jpg",
+    image: `${import.meta.env.BASE_URL}products/product_10.jpg`,
     date: "2022-05-15",
     tags: ["tin-tuc", "toa-soan", "toa-soan-dien-tu"],
     content: [

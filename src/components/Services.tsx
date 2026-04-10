@@ -128,7 +128,7 @@ export default function Services() {
                     ) : (
                       <img 
                         key={activeTab}
-                        src="/services/service_digital_transformation.png"
+                        src={`${import.meta.env.BASE_URL}services/service_digital_transformation.png`}
                         alt="Technology Solutions" 
                         className="anim-kenburns"
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }} 

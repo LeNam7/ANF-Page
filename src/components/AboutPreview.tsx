@@ -18,7 +18,7 @@ export default function AboutPreview() {
                   className="about-image"
               >
                   <div className="about-img-box">
-                      <img src="/01.jpg" alt="ANF Technology Office" />
+                      <img src={`${import.meta.env.BASE_URL}01.jpg`} alt="ANF Technology Office" />
                   </div>
               </motion.div>
               <motion.div 
@@ -85,7 +85,7 @@ export default function AboutPreview() {
                   className="about-image"
               >
                   <div className="about-img-box">
-                      <img src="/services_office.png" alt="ANF Technology Services" style={{ borderRadius: '12px' }} />
+                      <img src={`${import.meta.env.BASE_URL}services_office.png`} alt="ANF Technology Services" style={{ borderRadius: '12px' }} />
                   </div>
               </motion.div>
           </div>

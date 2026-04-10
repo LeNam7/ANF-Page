@@ -80,7 +80,7 @@ export default function Navbar() {
                 }
                 closeMenu();
             }}>
-                <img src="/anf-logo-text.svg" alt="ANF Technology Logo" height="40" />
+                <img src={`${import.meta.env.BASE_URL}anf-logo-text.svg`} alt="ANF Technology Logo" height="40" />
             </Link>
             <button 
                 className="mobile-menu-btn" 
@@ -149,7 +149,7 @@ export default function Navbar() {
                    </style>
 
                    <div className="modal-row">
-                       <div><img src="/01.jpg" alt="ANF Technology" style={{ width: '100%', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}01.jpg`} alt="ANF Technology" style={{ width: '100%', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} /></div>
                        <div>
                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                                <div style={{ width: '8px', height: '8px', backgroundColor: '#3b82f6', marginRight: '10px' }}></div>
@@ -168,11 +168,11 @@ export default function Navbar() {
                            <p style={{ color: '#9ca3af', fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>{t('about.modal.vision_desc1')}</p>
                            <p style={{ color: '#9ca3af', fontSize: '1rem', lineHeight: 1.6 }}><span dangerouslySetInnerHTML={{ __html: t('about.modal.vision_desc2') }}></span></p>
                        </div>
-                       <div><img src="/features-laptop.webp" alt="Vision" style={{ width: '100%', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}features-laptop.webp`} alt="Vision" style={{ width: '100%', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} /></div>
                    </div>
 
                    <div className="modal-row">
-                       <div><img src="/services_office.png" alt="Environment" style={{ width: '100%', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}services_office.png`} alt="Environment" style={{ width: '100%', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} /></div>
                        <div>
                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                                <div style={{ width: '8px', height: '8px', backgroundColor: '#3b82f6', marginRight: '10px' }}></div>
@@ -241,7 +241,7 @@ export default function Navbar() {
                    </div>
 
                    <div className="modal-row">
-                       <div><img src="/services_office.png" alt="AI Integration" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,229,255,0.15)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}services_office.png`} alt="AI Integration" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,229,255,0.15)' }} /></div>
                        <div>
                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                                <div style={{ width: '8px', height: '8px', backgroundColor: '#0ea5e9', marginRight: '10px' }}></div>
@@ -269,11 +269,11 @@ export default function Navbar() {
                                <li style={{ color: '#e2e8f0', marginBottom: '0.5rem', display: 'flex', alignItems: 'start' }}><span style={{ color: '#a855f7', marginRight: '8px' }}>✓</span> {t('services.modal.m3')}</li>
                            </ul>
                        </div>
-                       <div><img src="/features-laptop.webp" alt="AI Models" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(168,85,247,0.15)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}features-laptop.webp`} alt="AI Models" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(168,85,247,0.15)' }} /></div>
                    </div>
 
                    <div className="modal-row">
-                       <div><img src="/01.jpg" alt="Products" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(239,68,68,0.15)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}01.jpg`} alt="Products" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(239,68,68,0.15)' }} /></div>
                        <div>
                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                                <div style={{ width: '8px', height: '8px', backgroundColor: '#ef4444', marginRight: '10px' }}></div>
@@ -301,11 +301,11 @@ export default function Navbar() {
                                <li style={{ color: '#e2e8f0', marginBottom: '0.5rem', display: 'flex', alignItems: 'start' }}><span style={{ color: '#3b82f6', marginRight: '8px' }}>✓</span> {t('services.modal.o3')}</li>
                            </ul>
                        </div>
-                       <div><img src="/features-laptop.webp" alt="Outsourcing" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(59,130,246,0.15)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}features-laptop.webp`} alt="Outsourcing" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(59,130,246,0.15)' }} /></div>
                    </div>
 
                    <div className="modal-row" style={{ marginBottom: '1rem' }}>
-                       <div><img src="/services_office.png" alt="Digital Transformation" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(34,197,94,0.15)' }} /></div>
+                       <div><img src={`${import.meta.env.BASE_URL}services_office.png`} alt="Digital Transformation" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(34,197,94,0.15)' }} /></div>
                        <div>
                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                                <div style={{ width: '8px', height: '8px', backgroundColor: '#22c55e', marginRight: '10px' }}></div>

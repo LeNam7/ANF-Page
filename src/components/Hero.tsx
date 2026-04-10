@@ -59,7 +59,7 @@ export default function Hero() {
                             y: ["-2%", "2%", "-2%"]
                         }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        src="/hero.mp4"
+                        src={`${import.meta.env.BASE_URL}hero.mp4`}
                         autoPlay
                         loop
                         muted
