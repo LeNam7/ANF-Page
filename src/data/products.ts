@@ -7,6 +7,7 @@ export interface Product {
   enDescription?: string;
   image: string;
   date?: string;
+  link?: string;
   tags?: string[];
   content: {
     type: 'paragraph' | 'heading' | 'list' | 'image' | 'platforms' | 'fields' | 'technologies' | 'workload';
@@ -26,10 +27,51 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    id: 11,
+    slug: "anf-bot-clawbot",
+    title: "ANF_Bot - Trợ lý ảo AI (ClawBot)",
+    enTitle: "ANF_Bot - Smart AI Assistant (ClawBot)",
+    description: "Trợ lý ảo thông minh dựa trên công nghệ AI tiên tiến, hỗ trợ tự động hóa các tác vụ vận hành và chăm sóc khách hàng doanh nghiệp.",
+    enDescription: "Smart AI virtual assistant based on advanced AI technologies, designed to automate operational tasks and customer care systems.",
+    image: "/products/anf_bot_ai.png",
+    tags: ["ai", "assistant", "chatbot", "clawbot"],
+    content: [
+      { type: 'paragraph', text: 'ANF_Bot (được biết đến với tên gọi ClawBot) là giải pháp Trợ lý ảo thông minh (AI Assistant) do đội ngũ ANF Technology nghiên cứu và phát triển. Với khả năng xử lý ngôn ngữ tự nhiên vượt trội, ANF_Bot giúp doanh nghiệp rút ngắn thời gian xử lý công việc và tăng trải nghiệm người dùng.' },
+      { type: 'image', src: '/products/anf_bot_action.svg', alt: 'AI Virtual Assistant Action' },
+      { type: 'heading', text: 'Tính năng cốt lõi' },
+      { type: 'list', items: [
+        'Xử lý ngôn ngữ tự nhiên thông minh, linh hoạt',
+        'Khả năng tích hợp sâu vào hệ thống CRM/ERP của doanh nghiệp',
+        'Tự động phân tích và trích xuất dữ liệu, hỗ trợ code',
+        'Đóng vai trò nhân viên ảo chăm sóc khách hàng 24/7'
+      ]},
+      { type: 'platforms', text: 'Web-based, API Integration, CLI' },
+      { type: 'fields', text: 'AI, Tự động hóa' },
+      { type: 'technologies', text: 'NodeJS, Python, LLM, ReactJS' },
+      { type: 'workload', text: '16MM' }
+    ],
+    enContent: [
+      { type: 'paragraph', text: 'ANF_Bot (also known as ClawBot) is a Smart AI Assistant solution researched and developed by the ANF Technology team. With exceptional natural language processing capabilities, ANF_Bot helps enterprises minimize task processing time and enhance user experiences.' },
+      { type: 'image', src: '/products/anf_bot_action.svg', alt: 'AI Virtual Assistant Action' },
+      { type: 'heading', text: 'Core Features' },
+      { type: 'list', items: [
+        'Smart and flexible natural language processing',
+        'Deep integration capabilities into enterprise CRM/ERP systems',
+        'Automated data parsing, extraction, and code support',
+        'Acts as a 24/7 virtual customer service representative'
+      ]},
+      { type: 'platforms', text: 'Web-based, API Integration, CLI' },
+      { type: 'fields', text: 'AI, Automation' },
+      { type: 'technologies', text: 'NodeJS, Python, LLM, ReactJS' },
+      { type: 'workload', text: '16MM' }
+    ]
+  },
+  {
     id: 1,
     slug: "dimuonnoi-tim-kiem-hanh-trinh-nhanh-chong",
     title: "Dimuonnoi.vn - Tìm kiếm hành trình nhanh chóng",
     enTitle: "Dimuonnoi.vn - Quick Journey Search",
+    link: "https://dimuonnoi.vn/",
     description: "DIMUONNOI là trang web đặt chỗ và so sánh du lịch trực tuyến cung cấp cho người dùng nhiều lựa chọn di chuyển, bao gồm xe buýt, tàu hỏa và chuyến bay",
     enDescription: "DIMUONNOI is an online travel booking and comparison website providing users with a variety of transportation options including buses, trains, and flights.",
     image: "/products/product_01.jpg",
@@ -54,42 +96,9 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 2,
-    slug: "he-thong-khai-thac-nft",
-    title: "Hệ thống khai thác NFT",
-    enTitle: "NFT Mining System",
-    description: "Hệ thống tạo NFT từ hình ảnh và sử dụng trên hệ sinh thái blockchain.",
-    enDescription: "System for creating NFTs from images and utilizing them in the blockchain ecosystem.",
-    image: "/products/product_02.jpg",
-    date: "2022-06-30",
-    tags: ["nft", "blockchain"],
-    content: [
-      { type: 'paragraph', text: 'Hệ thống khai thác và đúc tài sản số NFT từ hình ảnh 2D cho khách hàng Nhật Bản, sử dụng hình ảnh 2D để tạo tài sản số độc nhất và sử dụng trên thị trường blockchain NFT.' },
-      { type: 'paragraph', text: 'Hệ thống tự động tạo ra hình ảnh của các nhân vật nữ hai chiều - “Bishojyo”, mà Nhật Bản tự hào, bằng cách sử dụng công nghệ AI và công nghệ GAN tích hợp áp dụng học sâu làm cốt lõi.' },
-      { type: 'paragraph', text: 'Hệ thống đúc tiền cho dự án 10.000 NFT này sử dụng ba công nghệ chính: service server API, service worker, service IPFS.' },
-      { type: 'paragraph', text: 'Hơn nữa, hệ thống có thể giúp tự động tạo ra 6 hình ảnh ngẫu nhiên và người dùng có thể chọn và đúc ký tự họ muốn dưới dạng NFT.' },
-      { type: 'image', src: 'https://anf-technology.com/posts/test-article/09-1.png', alt: 'NFT' },
-      { type: 'platforms', text: 'Web-based Application, Google Playstore, Apple Appstore' },
-      { type: 'fields', text: 'Blockchain' },
-      { type: 'technologies', text: 'ReactJS, NodeJS, Solidity' },
-      { type: 'workload', text: '18MM' }
-    ],
-    enContent: [
-      { type: 'paragraph', text: 'An NFT digital asset mining and minting system from 2D images for Japanese clients, using 2D images to create unique digital assets and operate on the NFT blockchain market.' },
-      { type: 'paragraph', text: 'The system automatically generates images of two-dimensional female characters - "Bishojyo", which Japan is famous for, utilizing cutting-edge AI and integrated GAN technologies applying deep learning at its core.' },
-      { type: 'paragraph', text: 'The minting system for this 10,000 NFT project utilizes three main technologies: service server API, service worker, service IPFS.' },
-      { type: 'paragraph', text: 'Furthermore, the system can assist in automatically generating 6 random images, and users can select and mint their desired characters as NFTs.' },
-      { type: 'image', src: 'https://anf-technology.com/posts/test-article/09-1.png', alt: 'NFT' },
-      { type: 'platforms', text: 'Web-based Application, Google Playstore, Apple Appstore' },
-      { type: 'fields', text: 'Blockchain' },
-      { type: 'technologies', text: 'ReactJS, NodeJS, Solidity' },
-      { type: 'workload', text: '18MM' }
-    ]
-  },
-  {
     id: 3,
     slug: "he-thong-quan-ly-khach-hang-crm",
-    title: "Hệ thống quản lý khách hàng CRM",
+    title: "Hệ thống quản lý khách hàng BE CRM",
     enTitle: "CRM Customer Management System",
     description: "Hệ thống quản lý thông tin khách hàng tập trung, cung cấp các tính năng quản lý thông tin khách hàng, chiến dịch marketing cũng như phân tích hành vi khách hàng",
     enDescription: "Centralized customer information management system providing features for managing customer info, marketing campaigns, and analyzing behavior.",
@@ -149,6 +158,39 @@ export const products: Product[] = [
       { type: 'fields', text: 'Management' },
       { type: 'technologies', text: 'PHP, MySQL, VueJS, RESTApi' },
       { type: 'workload', text: '20MM' }
+    ]
+  },
+  {
+    id: 2,
+    slug: "he-thong-khai-thac-nft",
+    title: "Hệ thống khai thác NFT",
+    enTitle: "NFT Mining System",
+    description: "Hệ thống tạo NFT từ hình ảnh và sử dụng trên hệ sinh thái blockchain.",
+    enDescription: "System for creating NFTs from images and utilizing them in the blockchain ecosystem.",
+    image: "/products/product_02.jpg",
+    date: "2022-06-30",
+    tags: ["nft", "blockchain"],
+    content: [
+      { type: 'paragraph', text: 'Hệ thống khai thác và đúc tài sản số NFT từ hình ảnh 2D cho khách hàng Nhật Bản, sử dụng hình ảnh 2D để tạo tài sản số độc nhất và sử dụng trên thị trường blockchain NFT.' },
+      { type: 'paragraph', text: 'Hệ thống tự động tạo ra hình ảnh của các nhân vật nữ hai chiều - “Bishojyo”, mà Nhật Bản tự hào, bằng cách sử dụng công nghệ AI và công nghệ GAN tích hợp áp dụng học sâu làm cốt lõi.' },
+      { type: 'paragraph', text: 'Hệ thống đúc tiền cho dự án 10.000 NFT này sử dụng ba công nghệ chính: service server API, service worker, service IPFS.' },
+      { type: 'paragraph', text: 'Hơn nữa, hệ thống có thể giúp tự động tạo ra 6 hình ảnh ngẫu nhiên và người dùng có thể chọn và đúc ký tự họ muốn dưới dạng NFT.' },
+      { type: 'image', src: 'https://anf-technology.com/posts/test-article/09-1.png', alt: 'NFT' },
+      { type: 'platforms', text: 'Web-based Application, Google Playstore, Apple Appstore' },
+      { type: 'fields', text: 'Blockchain' },
+      { type: 'technologies', text: 'ReactJS, NodeJS, Solidity' },
+      { type: 'workload', text: '18MM' }
+    ],
+    enContent: [
+      { type: 'paragraph', text: 'An NFT digital asset mining and minting system from 2D images for Japanese clients, using 2D images to create unique digital assets and operate on the NFT blockchain market.' },
+      { type: 'paragraph', text: 'The system automatically generates images of two-dimensional female characters - "Bishojyo", which Japan is famous for, utilizing cutting-edge AI and integrated GAN technologies applying deep learning at its core.' },
+      { type: 'paragraph', text: 'The minting system for this 10,000 NFT project utilizes three main technologies: service server API, service worker, service IPFS.' },
+      { type: 'paragraph', text: 'Furthermore, the system can assist in automatically generating 6 random images, and users can select and mint their desired characters as NFTs.' },
+      { type: 'image', src: 'https://anf-technology.com/posts/test-article/09-1.png', alt: 'NFT' },
+      { type: 'platforms', text: 'Web-based Application, Google Playstore, Apple Appstore' },
+      { type: 'fields', text: 'Blockchain' },
+      { type: 'technologies', text: 'ReactJS, NodeJS, Solidity' },
+      { type: 'workload', text: '18MM' }
     ]
   },
   {

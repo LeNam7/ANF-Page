@@ -37,7 +37,7 @@ export default function Testimonials() {
                     <div className={`testimo-slide ${currentSlide === 0 ? 'active' : ''}`}>
                         <h3 className="testimo-quote">"{t('testimonials.t1_quote')}"</h3>
                         <div className="testimo-author">
-                            <div className="testimo-avatar" style={{ background: 'linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)' }}>DK</div>
+                            <img src="/avatar-kha.jpg" alt="Đỗ Minh Kha" className="testimo-avatar" style={{ objectFit: 'cover' }} />
                             <div className="testimo-info-single">
                                 <h4>{t('testimonials.t1_author')}</h4>
                                 <p>{t('testimonials.t1_role')}</p>
@@ -48,7 +48,7 @@ export default function Testimonials() {
                     <div className={`testimo-slide ${currentSlide === 1 ? 'active' : ''}`}>
                         <h3 className="testimo-quote">"{t('testimonials.t2_quote')}"</h3>
                         <div className="testimo-author">
-                            <div className="testimo-avatar" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%)' }}>HA</div>
+                            <img src="/avatar-anh.jpg" alt="Hoàng Lan Anh" className="testimo-avatar" style={{ objectFit: 'cover' }} />
                             <div className="testimo-info-single">
                                 <h4>{t('testimonials.t2_author')}</h4>
                                 <p>{t('testimonials.t2_role')}</p>
@@ -59,7 +59,7 @@ export default function Testimonials() {
                     <div className={`testimo-slide ${currentSlide === 2 ? 'active' : ''}`}>
                         <h3 className="testimo-quote">"{t('testimonials.t3_quote')}"</h3>
                         <div className="testimo-author">
-                            <div className="testimo-avatar" style={{ background: 'linear-gradient(135deg, #06b6d4 0%, #38bdf8 100%)' }}>CN</div>
+                            <img src="/avatar-nam.jpg" alt="Chu Hoài Nam" className="testimo-avatar" style={{ objectFit: 'cover' }} />
                             <div className="testimo-info-single">
                                 <h4>{t('testimonials.t3_author')}</h4>
                                 <p>{t('testimonials.t3_role')}</p>
