@@ -62,15 +62,15 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
           <style>
              {`
               .product-modal-body img { max-width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 2rem 0; }
-              .product-modal-body p { color: #9ca3af; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.2rem; }
-              .product-modal-body h2 { color: #fff; font-size: 1.6rem; margin: 2rem 0 1rem; }
-              .product-modal-body ul { padding-left: 1.5rem; margin-bottom: 1.5rem; color: #e2e8f0; }
+              .product-modal-body p { color: ${theme === 'dark' ? '#9ca3af' : '#4b5563'}; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.2rem; }
+              .product-modal-body h2 { color: ${theme === 'dark' ? '#fff' : '#111827'}; font-size: 1.6rem; margin: 2rem 0 1rem; }
+              .product-modal-body ul { padding-left: 1.5rem; margin-bottom: 1.5rem; color: ${theme === 'dark' ? '#e2e8f0' : '#4b5563'}; }
               .product-modal-body li { margin-bottom: 0.5rem; line-height: 1.6; }
               
-              .meta-grid { display: grid; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
-              .meta-item { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
-              .meta-label { font-weight: 600; color: #00e5ff; min-width: 150px; }
-              .meta-value { color: #d1d5db; }
+              .meta-grid { display: grid; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}; }
+              .meta-item { display: flex; align-items: flex-start; gap: 1rem; background: ${theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)'}; padding: 1rem; border-radius: 8px; border: 1px solid ${theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}; }
+              .meta-label { font-weight: 600; color: ${theme === 'dark' ? '#00e5ff' : '#0284c7'}; min-width: 150px; }
+              .meta-value { color: ${theme === 'dark' ? '#d1d5db' : '#374151'}; }
               
               @media (min-width: 768px) {
                 .meta-grid { grid-template-columns: 1fr 1fr; }
@@ -79,8 +79,8 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
           </style>
 
           <div style={{ textAlign: 'center', marginBottom: '3rem', marginTop: '-10px' }}>
-             <h1 style={{ fontSize: '2.5rem', margin: '0 0 1rem', color: '#fff' }}>{language === 'en' ? (product.enTitle || product.title) : product.title}</h1>
-             <p style={{ color: '#00e5ff', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>{language === 'en' ? (product.enDescription || product.description) : product.description}</p>
+             <h1 style={{ fontSize: '2.5rem', margin: '0 0 1rem', color: theme === 'dark' ? '#fff' : '#111827' }}>{language === 'en' ? (product.enTitle || product.title) : product.title}</h1>
+             <p style={{ color: theme === 'dark' ? '#00e5ff' : '#0284c7', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>{language === 'en' ? (product.enDescription || product.description) : product.description}</p>
           </div>
 
           <div className="content-render">
@@ -131,7 +131,11 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
                 <div className="meta-label">{t('products.tags')}</div>
                 <div className="meta-value" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                   {product.tags.map(tag => (
-                    <span key={tag} style={{ background: 'rgba(0,229,255,0.1)', color: '#00e5ff', padding: '0.2rem 0.6rem', borderRadius: '4px', fontSize: '0.85rem' }}>
+                    <span key={tag} style={{ 
+                      background: theme === 'dark' ? 'rgba(0,229,255,0.1)' : 'rgba(2,132,199,0.1)', 
+                      color: theme === 'dark' ? '#00e5ff' : '#0284c7', 
+                      padding: '0.2rem 0.6rem', borderRadius: '4px', fontSize: '0.85rem' 
+                    }}>
                       #{tag.trim()}
                     </span>
                   ))}
