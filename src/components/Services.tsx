@@ -116,7 +116,7 @@ export default function Services() {
                     {[1, 2, 3, 4, 5].includes(activeTab) ? (
                       <video 
                         key={`video-${activeTab}`}
-                        src={`/services/service_video_${activeTab}.mp4`} 
+                        src={`${import.meta.env.BASE_URL}services/service_video_${activeTab}.mp4`} 
                         autoPlay 
                         loop 
                         muted 
