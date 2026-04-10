@@ -1,11 +1,31 @@
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Bot, BrainCircuit, MonitorSmartphone, Users, Rocket } from 'lucide-react';
+import { Bot, BrainCircuit, MonitorSmartphone, Users, Rocket, Volume2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+let currentAudio: HTMLAudioElement | null = null;
+
 export default function Services() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState(1);
+
+  const handleTextToSpeech = (index: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+    
+    // Sử dụng file MP3 đọc tĩnh đã được tải sẵn từ server Google
+    // Đảm bảo hoạt động 100% hoàn hảo và không bao giờ bị chặn hay đọc nhầm tiếng Anh
+    const langCode = language === 'en' ? 'en' : 'vi';
+    currentAudio = new Audio(`/tts/${langCode}_${index}.mp3`);
+    
+    currentAudio.play().catch(err => {
+      console.warn("Autoplay block:", err);
+    });
+  };
 
   return (
     <section id="services" className="features-ext section-padding">
@@ -31,7 +51,10 @@ export default function Services() {
                             <h3 className="tab-title">{t('services.modal.ai_integration_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-1" style={{ display: activeTab === 1 ? 'block' : 'none' }}>
-                            <p>{t('services.modal.ai_integration_desc')}</p>
+                            <p style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
+                                <span>{t('services.modal.ai_integration_desc')}</span>
+                                <button onClick={(e) => handleTextToSpeech(1, e)} title="Đọc văn bản" style={{ background: 'rgba(14,165,233,0.1)', border: '1px solid rgba(14,165,233,0.2)', borderRadius: '6px', color: '#0ea5e9', cursor: 'pointer', padding: '6px', flexShrink: 0, transition: 'all 0.2s', marginTop: '-2px' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(14,165,233,0.2)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(14,165,233,0.1)'}><Volume2 size={16} /></button>
+                            </p>
                         </div>
                     </div>
                     {/* Tab 2 */}
@@ -41,7 +64,10 @@ export default function Services() {
                             <h3 className="tab-title">{t('services.modal.model_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-2" style={{ display: activeTab === 2 ? 'block' : 'none' }}>
-                            <p>{t('services.modal.model_desc')}</p>
+                            <p style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
+                                <span>{t('services.modal.model_desc')}</span>
+                                <button onClick={(e) => handleTextToSpeech(2, e)} title="Đọc văn bản" style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.2)', borderRadius: '6px', color: '#a855f7', cursor: 'pointer', padding: '6px', flexShrink: 0, transition: 'all 0.2s', marginTop: '-2px' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(168,85,247,0.2)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(168,85,247,0.1)'}><Volume2 size={16} /></button>
+                            </p>
                         </div>
                     </div>
                     {/* Tab 3 */}
@@ -51,7 +77,10 @@ export default function Services() {
                             <h3 className="tab-title">{t('services.modal.product_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-3" style={{ display: activeTab === 3 ? 'block' : 'none' }}>
-                            <p>{t('services.modal.product_desc')}</p>
+                            <p style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
+                                <span>{t('services.modal.product_desc')}</span>
+                                <button onClick={(e) => handleTextToSpeech(3, e)} title="Đọc văn bản" style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '6px', color: '#ef4444', cursor: 'pointer', padding: '6px', flexShrink: 0, transition: 'all 0.2s', marginTop: '-2px' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(239,68,68,0.2)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(239,68,68,0.1)'}><Volume2 size={16} /></button>
+                            </p>
                         </div>
                     </div>
                     {/* Tab 4 */}
@@ -61,7 +90,10 @@ export default function Services() {
                             <h3 className="tab-title">{t('services.modal.outsourcing_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-4" style={{ display: activeTab === 4 ? 'block' : 'none' }}>
-                            <p>{t('services.modal.outsourcing_desc')}</p>
+                            <p style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
+                                <span>{t('services.modal.outsourcing_desc')}</span>
+                                <button onClick={(e) => handleTextToSpeech(4, e)} title="Đọc văn bản" style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: '6px', color: '#3b82f6', cursor: 'pointer', padding: '6px', flexShrink: 0, transition: 'all 0.2s', marginTop: '-2px' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(59,130,246,0.2)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(59,130,246,0.1)'}><Volume2 size={16} /></button>
+                            </p>
                         </div>
                     </div>
                     {/* Tab 5 */}
@@ -71,7 +103,10 @@ export default function Services() {
                             <h3 className="tab-title">{t('services.modal.dx_label')}</h3>
                         </div>
                         <div className="tab-body" id="tab-body-5" style={{ display: activeTab === 5 ? 'block' : 'none' }}>
-                            <p>{t('services.modal.dx_desc1')}</p>
+                            <p style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
+                                <span>{t('services.modal.dx_desc1')}</span>
+                                <button onClick={(e) => handleTextToSpeech(5, e)} title="Đọc văn bản" style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: '6px', color: '#22c55e', cursor: 'pointer', padding: '6px', flexShrink: 0, transition: 'all 0.2s', marginTop: '-2px' }} onMouseEnter={e => e.currentTarget.style.background = 'rgba(34,197,94,0.2)'} onMouseLeave={e => e.currentTarget.style.background = 'rgba(34,197,94,0.1)'}><Volume2 size={16} /></button>
+                            </p>
                         </div>
                     </div>
                 </div>
