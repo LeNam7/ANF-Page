@@ -13,6 +13,10 @@ import 'lenis/dist/lenis.css';
 
 function SmoothScrolling({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    if (window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches) {
+      return;
+    }
+
     const lenis = new Lenis({
       autoRaf: true,
       duration: 1.2,

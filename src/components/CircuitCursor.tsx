@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface Point {
@@ -16,15 +16,30 @@ export default function CircuitCursor() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { theme } = useTheme();
 
+    const [isMobile, setIsMobile] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches;
+        }
+        return false;
+    });
+
     useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        if (isMobile) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d', { alpha: true });
         if (!ctx) return;
 
-        // Giảm phân giải trên mobile để tối ưu hóa FPS
-        const isMobile = window.innerWidth <= 768 || window.matchMedia("(pointer: coarse)").matches;
-        const scale = isMobile ? 0.3 : 1; 
+        const scale = 1; 
 
         let width = window.innerWidth;
         let height = window.innerHeight;
@@ -214,7 +229,9 @@ export default function CircuitCursor() {
             window.removeEventListener('touchmove', handleTouchMove);
             cancelAnimationFrame(animationId);
         };
-    }, [theme]);
+    }, [theme, isMobile]);
+
+    if (isMobile) return null;
 
     return (
         <canvas
