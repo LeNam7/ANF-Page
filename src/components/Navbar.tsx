@@ -50,6 +50,23 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      const nav = document.getElementById('nav-links');
+      const btn = document.getElementById('mobile-menu-btn');
+      if (isMobileMenuOpen && nav && btn && !nav.contains(e.target as Node) && !btn.contains(e.target as Node)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
+
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   const handleThemeToggle = () => {
@@ -74,7 +91,9 @@ export default function Navbar() {
     >
         <div className="container nav-container">
             <Link to="/" className="logo" onClick={(e) => {
-                if (window.location.pathname === '/') {
+                const basePath = import.meta.env.BASE_URL;
+                const path = window.location.pathname;
+                if (path === '/' || path.endsWith(basePath) || path === basePath.slice(0, -1) || path.endsWith('/ANF-Page/')) {
                     e.preventDefault();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
