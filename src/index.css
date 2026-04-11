@@ -948,11 +948,11 @@ a {
     }
     
     body.light-mode .nav-links a {
-        color: #ffffff;
+        color: #ffffff !important;
     }
     
     body.light-mode .nav-links a:hover {
-        color: #00e5ff;
+        color: #00e5ff !important;
     }
     
     body.light-mode .nav-links button {
