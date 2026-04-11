@@ -225,6 +225,22 @@ a {
     transition: all 0.3s ease-in-out;
 }
 
+.mobile-menu-btn.active .bar {
+    background-color: #ffffff !important;
+}
+
+.mobile-menu-btn.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 /* Hero Section */
 .hero {
     position: relative;

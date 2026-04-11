@@ -102,7 +102,7 @@ export default function Navbar() {
                 <img src={`${import.meta.env.BASE_URL}anf-logo-text.svg`} alt="ANF Technology Logo" height="40" />
             </Link>
             <button 
-                className="mobile-menu-btn" 
+                className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`} 
                 id="mobile-menu-btn" 
                 aria-label="Toggle Menu"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
