@@ -959,6 +959,11 @@ a {
     .footer-container {
         grid-template-columns: 1fr;
     }
+
+    .testimo-quote {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* --- Products Section --- */
