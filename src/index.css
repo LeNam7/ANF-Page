@@ -972,7 +972,7 @@ a {
 
     .slider-btn.prev-btn {
         position: absolute;
-        left: -1rem;
+        left: -0.5rem;
         top: 40%;
         transform: translateY(-50%);
         z-index: 10;
@@ -980,14 +980,14 @@ a {
 
     .slider-btn.next-btn {
         position: absolute;
-        right: -1rem;
+        right: -0.5rem;
         top: 40%;
         transform: translateY(-50%);
         z-index: 10;
     }
 
     .testimo-slider {
-        padding: 0 1rem;
+        padding: 0 2.5rem;
     }
 }
 
