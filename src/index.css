@@ -931,6 +931,19 @@ a {
         right: 0;
     }
     
+    body.light-mode .nav-links a {
+        color: #cbd5e1;
+    }
+    
+    body.light-mode .nav-links a:hover {
+        color: #fff;
+    }
+    
+    body.light-mode .nav-links button {
+        color: #cbd5e1 !important;
+        border-color: #cbd5e1 !important;
+    }
+    
     .hero-container {
         text-align: left;
     }
