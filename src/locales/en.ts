@@ -12,9 +12,9 @@ export default {
   },
   hero: {
     label: "MAKE LIVING SIMPLER",
-    title1: "“Making life",
+    title1: "“Make living",
     title2: "simpler”",
-    subtitle: "With the desire to contribute to the strong development of the country's IT industry, ANF Technology has chosen the operational principle \"Making life simpler\". By pioneering the integration of an Artificial Intelligence (AI) solution ecosystem, we desire our products and services to deliver an exceptionally smart experience, making life increasingly simpler and more convenient.",
+    subtitle: "With the desire to contribute to the strong development of the country's IT industry, ANF Technology has chosen the operational principle \"Make living simpler\". By pioneering the integration of an Artificial Intelligence (AI) solution ecosystem, we desire our products and services to deliver an exceptionally smart experience, making living increasingly simpler and more convenient.",
     cta_primary: "Explore Products",
     cta_secondary: "Learn More",
   },
