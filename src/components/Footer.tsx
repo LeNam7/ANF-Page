@@ -8,6 +8,17 @@ export default function Footer() {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    if (isHome) {
+      e.preventDefault();
+      const element = document.getElementById(targetId);
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
       <svg className="footer-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ display: 'block', width: '100%', height: 'auto', marginBottom: '-1px' }}>
@@ -48,16 +59,15 @@ export default function Footer() {
               </motion.div>
               <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="footer-col links-col">
                   <h4 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.1rem' }}>{t('footer.companyText')}</h4>
-                  <Link to="/gioi-thieu" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.about')}</Link>
-                  <a href={isHome ? '#products' : '/#products'} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.products')}</a>
+                  <a href={isHome ? '#about' : '/#about'} onClick={(e) => handleSmoothScroll(e, 'about')} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.about')}</a>
+                  <a href={isHome ? '#products' : '/#products'} onClick={(e) => handleSmoothScroll(e, 'products')} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.products')}</a>
                   <a href="#" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('footer.termsText')}</a>
                   <a href="#" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('footer.privacyText')}</a>
               </motion.div>
               <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="footer-col links-col">
                   <h4 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.1rem' }}>{t('footer.servicesText')}</h4>
-                  <a href={isHome ? '#services' : '/#services'} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.services')}</a>
-                  <a href={isHome ? '#contact' : '/#contact'} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.contact')}</a>
-                  <a href="#" style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>FAQ</a>
+                  <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleSmoothScroll(e, 'services')} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.services')}</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('openContactModal')); }} style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '0.8rem', fontSize: '0.9rem', textDecoration: 'none' }}>{t('navbar.contact')}</a>
               </motion.div>
           </motion.div>
           

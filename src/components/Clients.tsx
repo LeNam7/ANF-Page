@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export default function Clients() {
   const { t } = useLanguage();
   return (
-    <section className="clients section-padding">
+    <section className="clients">
         <div className="container">
             <p className="clients-title">{t('clients.title')}</p>
             <div className="clients-slider">

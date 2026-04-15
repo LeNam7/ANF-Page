@@ -83,9 +83,10 @@ export default function Products() {
           <p className="hero-label text-primary uppercase tracker" style={{ justifyContent: 'center', marginBottom: '0.5rem' }}>{t('products.label')}</p>
           <h2 className="section-title" style={{ marginBottom: '3rem', textAlign: 'center' }}>{t('products.title')}</h2>
         </motion.div>
+      </div>
         
-        <div>
-          <div 
+      <div className="products-fullwidth-container">
+        <div 
             className={`products-slider-wrapper ${isMouseDown ? 'active' : ''}`}
             ref={sliderRef}
             onMouseDown={handleMouseDown}
@@ -121,7 +122,6 @@ export default function Products() {
             </motion.div>
           </div>
         </div>
-      </div>
       
       {selectedProduct && (
         <ProductDetailsModal 

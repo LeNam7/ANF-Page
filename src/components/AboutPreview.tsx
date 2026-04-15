@@ -47,7 +47,7 @@ export default function AboutPreview() {
               >
                   <p className="hero-label text-primary uppercase tracker" style={{ marginBottom: '0.5rem' }}>{t('about_preview.services_label')}</p>
                   <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>{t('about_preview.services_title')}</h2>
-                  <p style={{ color: '#9ca3af', fontSize: '1.1rem', marginBottom: '1.5rem' }}>
+                  <p>
                       {t('about_preview.services_desc')}
                   </p>
                   
