@@ -10,6 +10,7 @@ interface ProductDetailsModalProps {
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { motion } from 'framer-motion';
+import TelegramBotDemo from './TelegramBotDemo';
 
 export default function ProductDetailsModal({ product, onClose }: ProductDetailsModalProps) {
   const { t, language } = useLanguage();
@@ -99,6 +100,11 @@ export default function ProductDetailsModal({ product, onClose }: ProductDetails
               if (item.type === 'paragraph') return <p key={idx}>{item.text}</p>;
               if (item.type === 'heading') return <h2 key={idx}>{item.text}</h2>;
               if (item.type === 'image') return <img key={idx} src={item.src} alt={item.alt} />;
+              if (item.type === 'telegram_demo') return (
+                <div key={idx} style={{ height: '500px', borderRadius: '12px', overflow: 'hidden', margin: '2rem 0', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+                   <TelegramBotDemo />
+                </div>
+              );
               if (item.type === 'list') return (
                 <ul key={idx}>
                   {item.items?.map((li, i) => <li key={i}>{li}</li>)}

@@ -10,14 +10,14 @@ export interface Product {
   link?: string;
   tags?: string[];
   content: {
-    type: 'paragraph' | 'heading' | 'list' | 'image' | 'platforms' | 'fields' | 'technologies' | 'workload';
+    type: 'paragraph' | 'heading' | 'list' | 'image' | 'platforms' | 'fields' | 'technologies' | 'workload' | 'telegram_demo';
     text?: string;
     items?: string[];
     src?: string;
     alt?: string;
   }[];
   enContent?: {
-    type: 'paragraph' | 'heading' | 'list' | 'image' | 'platforms' | 'fields' | 'technologies' | 'workload';
+    type: 'paragraph' | 'heading' | 'list' | 'image' | 'platforms' | 'fields' | 'technologies' | 'workload' | 'telegram_demo';
     text?: string;
     items?: string[];
     src?: string;
@@ -37,7 +37,7 @@ export const products: Product[] = [
     tags: ["ai", "assistant", "chatbot", "clawbot"],
     content: [
       { type: 'paragraph', text: 'ANF_Bot (được biết đến với tên gọi ClawBot) là giải pháp Trợ lý ảo thông minh (AI Assistant) do đội ngũ ANF Technology nghiên cứu và phát triển. Với khả năng xử lý ngôn ngữ tự nhiên vượt trội, ANF_Bot giúp doanh nghiệp rút ngắn thời gian xử lý công việc và tăng trải nghiệm người dùng.' },
-      { type: 'image', src: `${import.meta.env.BASE_URL}products/anf_bot_action.svg`, alt: 'AI Virtual Assistant Action' },
+      { type: 'telegram_demo' },
       { type: 'heading', text: 'Tính năng cốt lõi' },
       { type: 'list', items: [
         'Xử lý ngôn ngữ tự nhiên thông minh, linh hoạt',
@@ -52,7 +52,7 @@ export const products: Product[] = [
     ],
     enContent: [
       { type: 'paragraph', text: 'ANF_Bot (also known as ClawBot) is a Smart AI Assistant solution researched and developed by the ANF Technology team. With exceptional natural language processing capabilities, ANF_Bot helps enterprises minimize task processing time and enhance user experiences.' },
-      { type: 'image', src: `${import.meta.env.BASE_URL}products/anf_bot_action.svg`, alt: 'AI Virtual Assistant Action' },
+      { type: 'telegram_demo' },
       { type: 'heading', text: 'Core Features' },
       { type: 'list', items: [
         'Smart and flexible natural language processing',
